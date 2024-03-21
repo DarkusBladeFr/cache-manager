@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="managerCache.js"></script>
+    </head>
+    <body>
+        <script>
+            let url="https://media.giphy.com/media/klIaoXlnH9TMY/giphy.mp4";
+            let videoCache = new DigitalMarketingManagerCache();
+            async function test(){
+                await videoCache.initCache("videoCache");
+                console.log(url);
+                await videoCache.deleteUrl(url);
+                await videoCache.addUrl(url);
+                await videoCache.purgeCache(url, 6);
+            }
+            test();
+        </script>
+        <video src="" muted autoplay></video>
+    </body>    
+</html>
