@@ -10,6 +10,7 @@ class DigitalMarketingManagerCache{
         let matchContent = await this.apiCache.match(url);
         if(matchContent == null){
             //add url in the cache if not ( /!\ need online to work /!\ )
+            //await this.apiCache.add(url);
             await this.apiCache.add(url);
             console.log("url cached");
         }
@@ -51,6 +52,22 @@ class DigitalMarketingManagerCache{
         else{
             console.log("url cannot be loaded");
             //load a video that show error
+        }
+    }
+    async purgeCache(url, n){
+        let matchContent = await this.apiCache.match(url);
+        let today = new Date();
+        console.log("receive today",today);
+        let timePurge = 3600000*n; //n jours avant la purge (le choix reviendra à l'entreprise)
+        console.log("receive timePurge", timePurge);
+        console.log("match url",matchContent);
+        console.log("receive timed cached",matchContent.headers.get('Date'));
+        if(today < matchContent.headers.get('Date')+timePurge){
+            //this.apiCache.delete(url);
+            console.log("url expired");
+        }
+        else{
+            console.log("url not expired");
         }
     }
 }
