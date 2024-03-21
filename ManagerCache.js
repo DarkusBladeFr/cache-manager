@@ -58,7 +58,7 @@ class DigitalMarketingManagerCache{
         let matchContent = await this.apiCache.match(url);
         let today = new Date();
         console.log("receive today",today);
-        let timePurge = 3600000*n; //n jours avant la purge (le choix reviendra à l'entreprise)
+        let timePurge = 3600000*n; //n days before purging the cache (the company will chosen)
         console.log("receive timePurge", timePurge);
         console.log("match url",matchContent);
         console.log("receive timed cached",matchContent.headers.get('Date'));
